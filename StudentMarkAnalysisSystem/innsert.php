@@ -1,0 +1,54 @@
+
+
+    <?php
+
+    /* Attempt MySQL server connection. Assuming you are running MySQL
+
+    server with default setting (user 'root' with no password) */
+
+    $link = mysqli_connect("localhost", "root", "", "db");
+
+     
+
+    // Check connection
+
+    if($link === false){
+
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+
+    }
+
+     
+
+    // Escape user inputs for security
+
+    $studentname = mysqli_real_escape_string($link, $_REQUEST['studentname']);
+
+    $rollno = mysqli_real_escape_string($link, $_REQUEST['rollno']);
+
+   
+
+     
+
+    // attempt insert query execution
+
+    $sql = "INSERT INTO studtb (sub_name, sub_name, internal_I, internal_II, semester) VALUES ('$sub_id', '$sub_name', '$internal_I','$internal_II','$semester')";
+
+    if(mysqli_query($link, $sql)){
+
+        echo "Records added successfully.";
+
+    } else{
+
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+
+    }
+
+     
+
+    // close connection
+
+    mysqli_close($link);
+
+    ?>
+
